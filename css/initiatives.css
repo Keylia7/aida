@@ -1,0 +1,189 @@
+/* Layout spécifique Initiatives */
+.app-container.vertical {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.view-switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.view-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+}
+
+.view-btn.active {
+    background: rgba(0, 242, 255, 0.2);
+    color: var(--accent-cyan);
+    box-shadow: inset 0 0 5px rgba(0, 242, 255, 0.5);
+}
+
+.kanban-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le header et le board horizontalement */
+    overflow: hidden;
+}
+
+.kanban-board {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    overflow-x: auto; /* Scroll horizontal si besoin */
+    height: calc(100% - 80px);
+    align-items: flex-start;
+}
+
+.kanban-column {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    background: rgba(10, 25, 47, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.kanban-column h3 {
+    padding-left: 10px;
+}
+
+.kanban-column h3 .count {
+    float: right;
+    background: rgba(0, 242, 255, 0.1);
+    padding: 0 8px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+}
+
+.cards-container {
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 10px;
+    
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-cyan) transparent;
+}
+
+.cards-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 10px;
+}
+
+/* Style des cartes */
+.initiative-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 242, 255, 0.1);
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.initiative-card:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 242, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 8px;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.initiative-console {
+    position: fixed; 
+    bottom: 25px;
+    left: var(--nav-width);
+    right: 0;
+    max-height: 25vh;
+    background: #010812;
+    border-top: 2px solid var(--accent-cyan);
+    transition: transform 0.3s ease, left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%);
+    z-index: 1000;
+    overflow: scroll;
+}
+
+.initiative-console.active {
+    transform: translateY(0);
+}
+
+.console-column h3 {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.subject-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subject-card:hover { border-color: var(--accent-cyan); }
+.subject-card.rejected { border-left: 3px solid #ff4444; opacity: 0.6; }
+.subject-card.in-progress { border-left: 3px solid var(--accent-cyan); }
+
+.step-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+}
+
+.step-row.completed { color: var(--accent-cyan); }
+.step-row.in-progress { color: #ffca28; }
+
+.nav-to-profile {
+    background: var(--accent-cyan);
+    color: black;
+    border: none;
+    font-size: 0.6rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Orbitron';
+}

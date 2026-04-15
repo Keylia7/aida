@@ -5,6 +5,7 @@
     --text-main: #e6f1ff;
     --text-dim: #8892b0;
     --border-color: rgba(0, 242, 255, 0.2);
+    --nav-width: 70px;
 }
 
 body {
@@ -149,15 +150,18 @@ h1 {
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 25px;
     background: rgba(10, 25, 47, 0.9);
     border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
-    padding: 5px 20px;
+    align-items: center;
+    padding: 0px 20px;
     font-size: 0.7rem;
     color: var(--text-dim);
     letter-spacing: 1px;
     box-sizing: border-box;
+    z-index: 2000;
 }
 
 .dot.pulse {
@@ -178,14 +182,18 @@ h1 {
 
 .app-container {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 25px);
     background-color: var(--bg-dark);
 }
 
 /* Zone A */
 .side-nav {
-    width: 70px; /* Mode réduit par défaut */
-    height: 100vh;
+    flex-shrink: 0;
+    position: sticky;
+    left: 0;
+    
+    width: var(--nav-width);
+    height: calc(100vh - 25px);
     background: rgba(5, 15, 30, 0.95);
     border-right: 1px solid var(--border-color);
     display: flex;
@@ -196,8 +204,8 @@ h1 {
 }
 
 /* Au survol (ou avec une classe .expanded), la barre s'élargit */
-.side-nav:hover {
-    width: 220px;
+.app-container:has(.side-nav:hover) {
+    --nav-width: 220px;
 }
 
 .nav-group {

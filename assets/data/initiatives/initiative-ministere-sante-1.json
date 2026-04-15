@@ -1,0 +1,36 @@
+{
+  "id": "INIT-002",
+  "title": "Programme de retour aux travaux manuels",
+  "supervisor": "Ministère de la Santé",
+  "status": "in-progress",
+  "description": "Mise en place d'un programme permettant de renouer avec les pratiques de travail du sol.",
+  "targetCount": 10,
+  "process": [
+    { "id" : 1, "type" : "global", "label": "Création affiche", "status": "completed" },
+    { "id" : 2, "type" : "global", "label": "Diffusion affiche", "status": "in-progress" },
+    { "id" : 3, "type" : "individual", "label": "Évaluation comportementale"}
+  ],
+  "candidates": [
+    {"id": "CAN-2026-RS-01",
+    "acceptation_status": "in-progress",
+    "process_status": [
+        {"process_id": 3,
+        "status": "pending"
+        }
+    ]},
+    {"id": "CAN-2026-RS-02",
+    "acceptation_status": "completed",
+    "process_status": [
+        {"process_id": 3,
+        "status": "completed"
+        }
+    ]},
+    {"id": "CAN-2026-RS-03",
+    "acceptation_status": "rejected",
+    "process_status": [
+        {"process_id": 3,
+        "status": "completed"
+        }
+    ]}
+  ]
+}

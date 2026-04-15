@@ -2,49 +2,43 @@ import os
 import json
 
 # Configuration des chemins
-DATA_PATH = "assets/data/candidates"
-OUTPUT_FILE_NAME = "index-candidates.json"
-INDEX_FILE = os.path.join(DATA_PATH, "summary", OUTPUT_FILE_NAME)
+GENERATION_SUMMARY_DATA = [
+    {
+        "type" : "candidates",
+        "data_path" : "assets/data/candidates",
+        "index_file_path" : os.path.join("assets/data/candidates", "summary", "index-candidates.json")
+    },
+    {   
+        "type" : "initiatives",
+        "data_path" : "assets/data/initiatives",
+        "index_file_path" : os.path.join("assets/data/initiatives", "summary", "index-initiatives.json")
+    }
+]
 
-def validate_structure(data, filename):
-    """Vérifie si les champs obligatoires sont présents."""
-    required_fields = ["id", "identity", "professional", "education", "psychology"]
-    for field in required_fields:
-        if field not in data:
-            print(f"⚠️ Erreur : Champ '{field}' manquant dans {filename}")
-            return False
-    return True
+def generate_index(origin_data):
+    data_path = origin_data["data_path"]
+    index_file_path = origin_data["index_file_path"]
 
-def generate_index():
-    if not os.path.exists(DATA_PATH):
-        print(f"❌ Dossier introuvable : {DATA_PATH}")
+    if not os.path.exists(data_path):
+        print(f"❌ Dossier introuvable : {data_path}")
         return
 
-    candidate_files = []
+    data_files = []
     
     # Scan du dossier
-    for filename in os.listdir(DATA_PATH):
-        if filename.endswith(".json") and filename != OUTPUT_FILE_NAME:
-            file_path = os.path.join(DATA_PATH, filename)
-            
-            try:
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    
-                    # Validation
-                    if validate_structure(data, filename):
-                        # On retire l'extension .json pour l'index
-                        candidate_files.append(filename.replace(".json", ""))
-            except Exception as e:
-                print(f"❌ Impossible de lire {filename} : {e}")
+    for filename in os.listdir(data_path):
+        if filename.endswith(".json"):
+            data_files.append(filename.replace(".json", ""))
 
-    candidate_files.sort()
+    data_files.sort()
+
     try:
-        with open(INDEX_FILE, 'w', encoding='utf-8') as f:
-            json.dump(candidate_files, f, indent=4)
-        print(f"✅ Index généré avec succès : {len(candidate_files)} candidats trouvés.")
+        with open(index_file_path, 'w', encoding='utf-8') as f:
+            json.dump(data_files, f, indent=4)
+        print(f"✅ Index généré avec succès : {len(data_files)} {origin_data["type"]}] trouvés.")
     except Exception as e:
         print(f"❌ Erreur lors de l'écriture de l'index : {e}")
 
 if __name__ == "__main__":
-    generate_index()
+    for origin_data in GENERATION_SUMMARY_DATA:
+        generate_index(origin_data)

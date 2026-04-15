@@ -1,0 +1,49 @@
+{
+  "id": "INIT-001",
+  "title": "Entreprise 500",
+  "supervisor": "Letha Carter",
+  "status": "in-progress",
+  "description": "Recrutement DG entreprise",
+  "targetCount": 1,
+  "process": [
+    { "id" : 1, "type" : "global", "label": "Publication annonce", "status": "completed" },
+    { "id" : 2, "type" : "individual", "label": "Approche individualisée" },
+    { "id" : 3, "type" : "individual", "label": "Évaluation comportementale"},
+    { "id" : 4, "type" : "individual", "label": "Signature NDA"},
+    { "id" : 5, "type" : "individual", "label": "Évaluation technique" }
+  ],
+  "candidates": [{
+    "id": "CAN-2026-MM-05",
+    "acceptation_status": "in-progress",
+    "process_status": [
+        {"process_id": 2,
+        "status": "completed"
+        },
+        {"process_id": 3,
+        "status": "completed"
+        },
+        {"process_id": 4,
+        "status": "in-progress"
+        },
+        {"process_id": 5,
+        "status": "pending"
+        }
+    ]},
+    {"id": "CAN-2026-RS-01",
+    "acceptation_status": "rejected",
+    "process_status": [
+        {"process_id": 2,
+        "status": "completed"
+        },
+        {"process_id": 3,
+        "status": "pending"
+        },
+        {"process_id": 4,
+        "status": "pending"
+        },
+        {"process_id": 5,
+        "status": "pending"
+        }
+    ]}
+  ]
+}
