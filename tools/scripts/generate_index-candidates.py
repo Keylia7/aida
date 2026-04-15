@@ -3,8 +3,8 @@ import json
 
 # Configuration des chemins
 DATA_PATH = "assets/data/candidates"
-OUTPUT_FILE_NAME = "_index-candidates.json"
-INDEX_FILE = os.path.join(DATA_PATH, OUTPUT_FILE_NAME)
+OUTPUT_FILE_NAME = "index-candidates.json"
+INDEX_FILE = os.path.join(DATA_PATH, "summary", OUTPUT_FILE_NAME)
 
 def validate_structure(data, filename):
     """Vérifie si les champs obligatoires sont présents."""

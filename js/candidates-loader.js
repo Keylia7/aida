@@ -7,9 +7,10 @@ async function loadCandidatesList() {
     listContainer.innerHTML = '<p class="loading">Initialisation du scan...</p>';
 
     try {
-        const response = await fetch('./../assets/data/candidates/_index-candidates.json');
+        const response = await fetch('./../assets/data/candidates/summary/index-candidates.json');
         const fileNames = await response.json();
 
+        console.log(fileNames)
         const candidatePromises = fileNames.map(name => 
             fetch(`./../assets/data/candidates/${name}.json`).then(res => res.json())
         );
