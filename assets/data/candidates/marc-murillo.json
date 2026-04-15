@@ -1,0 +1,62 @@
+{
+  "id": "CAN-2026-MM-05",
+  "identity": {
+    "firstName": "Marc",
+    "lastName": "Murillo",
+    "age": 38,
+    "sexe": "M",
+    "residence": "Secteur Administratif - Centre",
+    "currentSituation": "Directeur régional des Opérations"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "BeWell - société pharmaceutique",
+        "role": "Directeur régional",
+        "startDate": "2024-01",
+        "endDate": "Present",
+        "description": "Gestion des opérations, comptabilité générale, gestion de la R&D"
+      },
+      {
+        "company": "Gouvernement Central",
+        "role": "Conseiller en gestion de crise sanitairee",
+        "startDate": "2020-05",
+        "endDate": "2023-12",
+        "description": "Analyse d'impact socio-économique post-pandémie."
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "École Nationale d'Administration",
+        "degree": "Master en Politiques Publiques",
+        "status": "Diplômé",
+        "year": "2010"
+      }
+    ],
+    "trainings": [
+      {
+        "name": "Management de systèmes complexes",
+        "date": "2015"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Expert en Stratégie de Résilience",
+        "date": "2021"
+      }
+    ]
+  },
+  "psychology": {
+    "mbti": "ENTJ",
+    "traits": ["Commandant", "Organisé", "Pragmatique", "Parfois perçu comme froid"],
+    "notes": "Élément clé de la structure. Marc est le visage de l'autorité pragmatique. Capable de prendre des décisions impopulaires pour garantir la survie de la simulation. Sa loyauté envers Letha semble absolue, bien qu'il serve de fusible entre les 500 et la direction."
+  },
+  "recruitment": {
+    "globalStatus": "Selected",
+    "waves": [
+      { "id": 1, "step": "Executive Appointment", "result": "Confirmed" }
+    ]
+  }
+}

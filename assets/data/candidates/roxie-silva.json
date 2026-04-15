@@ -1,0 +1,58 @@
+{
+  "id": "CAN-2026-RS-01",
+  "identity": {
+    "firstName": "Roxie",
+    "lastName": "Silva",
+    "age": 21,
+    "sexe": "F",
+    "residence": "Secteur Urbain - Zone 4",
+    "currentSituation": "En recherche d'opportunités / Emploi précaire"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "Chain Coffee Corp",
+        "role": "Serveuse / Barista",
+        "startDate": "2025-02",
+        "endDate": "Present",
+        "description": "Gestion du flux client, logistique des stocks."
+      },
+      {
+        "company": "Livraison Express",
+        "role": "Coursière",
+        "startDate": "2024-06",
+        "endDate": "2025-01",
+        "description": "Logistique urbaine en zone contrainte."
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "Faculté de Droit - Université Centrale",
+        "degree": "Licence de Droit",
+        "status": "Interrompu (Niveau L2)",
+        "year": "2023-2024"
+      }
+    ],
+    "trainings": [],
+    "certifications": [
+      {
+        "name": "Habilitation Logistique Niveau 1",
+        "date": "2024"
+      }
+    ]
+  },
+  "psychology": {
+    "mbti": "INFP",
+    "traits": ["Idéaliste", "Médiatrice", "Observatrice"],
+    "notes": "Profil présentant un fort potentiel d'empathie. Études de droit interrompues suite aux crises sociales. Capacité d'analyse des structures de pouvoir."
+  },
+  "recruitment": {
+    "globalStatus": "Qualified",
+    "waves": [
+      { "id": 1, "step": "Data Analysis", "result": "Pass" },
+      { "id": 2, "step": "Psychological Interview", "result": "Pass" }
+    ]
+  }
+}

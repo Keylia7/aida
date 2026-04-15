@@ -175,3 +175,306 @@ h1 {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(1.2); }
 }
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    background-color: var(--bg-dark);
+}
+
+/* Zone A */
+.side-nav {
+    width: 70px; /* Mode réduit par défaut */
+    height: 100vh;
+    background: rgba(5, 15, 30, 0.95);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* Au survol (ou avec une classe .expanded), la barre s'élargit */
+.side-nav:hover {
+    width: 220px;
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.nav-group.bottom {
+    margin-top: auto; /* Pousse le groupe vers le bas */
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 23px; /* Alignement pour centrer l'icône à 70px */
+    text-decoration: none;
+    color: var(--text-dim);
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: rgba(0, 242, 255, 0.05);
+    color: var(--accent-cyan);
+}
+
+.nav-label {
+    margin-left: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.side-nav:hover .nav-label {
+    opacity: 1;
+}
+
+.nav-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 242, 255, 0.1);
+    margin: 5px 15px;
+}
+
+/* Zone B */
+.search-panel {
+    width: 300px;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.filter-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.status-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.status-pill {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: all 0.2s;
+}
+
+.status-pill:hover {
+    background: rgba(0, 242, 255, 0.05);
+}
+
+.status-pill.active {
+    background: var(--accent-cyan);
+    color: #000;
+    font-weight: bold;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.scroll-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.id-badge {
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--accent-cyan);
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    margin-right: 12px;
+    font-weight: bold;
+}
+
+.candidate-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.candidate-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.candidate-item .name {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+}
+
+.candidate-item.active .name {
+    color: var(--accent-cyan);
+}
+
+/* Zone C */
+
+#candidate-details .details-header,
+#candidate-details .details-grid{
+    display: none;
+}
+
+#candidate-details.has-selection .details-header{
+    display: grid;
+    grid-template-columns: minmax(300px, auto) 200px; 
+    justify-content: start; 
+    gap: 40px; 
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+#candidate-details.has-selection .details-grid {
+    display: flex;
+}
+
+#candidate-details.has-selection .details-grid {
+    display: grid;
+}
+
+.identity-block h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-cyan);
+    font-size: 1.8rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.identity-block p {
+    color: var(--text-dim);
+    margin: 5px 0 0 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.stats-block {
+    display: flex;
+    justify-content: flex-end; /* Aligné à droite de la colonne de 200px */
+    gap: 30px;
+    border-left: 1px solid rgba(0, 242, 255, 0.2);
+    padding-left: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-item .label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+}
+
+.stat-item .value {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-weight: bold;
+}
+
+.empty-state-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-dim);
+    text-align: center;
+    gap: 10px;
+}
+
+.empty-state-message h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-cyan);
+    letter-spacing: 2px;
+}
+
+#candidate-details.has-selection .empty-state-message {
+    display: none;
+}
+
+.details-view {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.readonly-watermark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.data-item {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 1px solid var(--border-color);
+}
+
+.item-date {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    font-family: 'Roboto Mono', monospace;
+    margin: 4px 0;
+}
+
+.item-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.cert-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    opacity: 0.8;
+}
