@@ -13,7 +13,7 @@ function renderGlobalNavigation(current_id) {
     
     const navHTML = NAV_CONFIG.map(item => `
         <a href="${current_id === item.id ? item.url+"#" : item.url}" 
-           class="nav-item ${item.locked ? 'locked' : ''} ${window.location.pathname.includes(item.url) ? 'active' : ''}"
+           class="nav-item ${item.locked ? 'locked' : ''} ${item.url ? 'active' : ''}"
            ${item.locked ? 'onclick="return false;"' : ''}>
             <div class="icon-wrapper">
                 <svg width="24" height="24">
