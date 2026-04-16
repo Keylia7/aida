@@ -38,11 +38,11 @@ document.querySelectorAll('.view-btn').forEach(btn => {
 
 async function loadInitiatives() {
     try {
-        const response = await fetch('./../assets/data/initiatives/summary/index-initiatives.json');
+        const response = await fetch('assets/data/initiatives/summary/index-initiatives.json');
         const fileNames = await response.json();
 
         const promises = fileNames.map(name => 
-            fetch(`./../assets/data/initiatives/${name}.json`).then(res => res.json())
+            fetch(`assets/data/initiatives/${name}.json`).then(res => res.json())
         );
         
         AIDA_STATE.allInitiatives = await Promise.all(promises);
@@ -56,11 +56,11 @@ async function loadInitiatives() {
 
 async function loadCandidateProfiles() {
     try {
-        const response = await fetch('./../assets/data/candidates/summary/index-candidates.json');
+        const response = await fetch('assets/data/candidates/summary/index-candidates.json');
         const fileNames = await response.json();
 
         const promises = fileNames.map(name => 
-            fetch(`./../assets/data/candidates/${name}.json`).then(res => res.json())
+            fetch(`assets/data/candidates/${name}.json`).then(res => res.json())
         );
         
         const profiles = await Promise.all(promises);

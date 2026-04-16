@@ -21,11 +21,11 @@ async function loadCandidatesList() {
     listContainer.innerHTML = '<p class="loading">Initialisation du scan...</p>';
 
     try {
-        const response = await fetch('./../assets/data/candidates/summary/index-candidates.json');
+        const response = await fetch('assets/data/candidates/summary/index-candidates.json');
         const fileNames = await response.json();
 
         const candidatePromises = fileNames.map(name => 
-            fetch(`./../assets/data/candidates/${name}.json`).then(res => res.json())
+            fetch(`assets/data/candidates/${name}.json`).then(res => res.json())
         );
         
         const candidates = await Promise.all(candidatePromises);

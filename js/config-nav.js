@@ -17,7 +17,7 @@ function renderGlobalNavigation(current_id) {
            ${item.locked ? 'onclick="return false;"' : ''}>
             <div class="icon-wrapper">
                 <svg width="24" height="24">
-                    <use href="./../assets/svg/icons.svg#${item.icon_svg}"></use>
+                    <use href="assets/svg/icons.svg#${item.icon_svg}"></use>
                 </svg>
             </div>
             <span class="nav-label">${item.label}</span>
