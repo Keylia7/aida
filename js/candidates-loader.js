@@ -11,6 +11,11 @@ function getCandidateIdFromURL() {
     return params.get('id');
 }
 
+window.addEventListener('DOMContentLoaded', async () => {
+    renderGlobalNavigation('candidats')
+    await loadCandidatesList();
+});
+
 async function loadCandidatesList() {
     
     listContainer.innerHTML = '<p class="loading">Initialisation du scan...</p>';
@@ -72,7 +77,6 @@ function renderList(selectedCandidates = AIDA_STATE.allCandidates){
 }
 
 
-window.addEventListener('DOMContentLoaded', loadCandidatesList);
 
 function showCandidateDetail(id) {
     const detailsContainer = document.getElementById('candidate-details');

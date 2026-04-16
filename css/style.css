@@ -6,6 +6,8 @@
     --text-dim: #8892b0;
     --border-color: rgba(0, 242, 255, 0.2);
     --nav-width: 70px;
+        
+    --status-danger: #ff4444;
 }
 
 body {
@@ -145,6 +147,22 @@ h1 {
 .menu-card h3 { font-family: 'Orbitron', sans-serif; margin-bottom: 10px; }
 .menu-card p { color: var(--text-dim); font-size: 0.9rem; }
 
+.menu-card.locked {
+    cursor: not-allowed;
+    border-color: rgba(255, 68, 68, 0.2);
+    filter: saturate(0.2);
+}
+
+.menu-card.locked::after {
+    content: "ACCÈS RESTREINT";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.5rem;
+    color: var(--status-danger);
+    letter-spacing: 1px;
+}
+
 .system-bar {
     position: fixed;
     bottom: 0;
@@ -186,7 +204,6 @@ h1 {
     background-color: var(--bg-dark);
 }
 
-/* Zone A */
 .side-nav {
     flex-shrink: 0;
     position: sticky;
@@ -203,7 +220,7 @@ h1 {
     z-index: 100;
 }
 
-/* Au survol (ou avec une classe .expanded), la barre s'élargit */
+
 .app-container:has(.side-nav:hover) {
     --nav-width: 220px;
 }
@@ -231,6 +248,14 @@ h1 {
 .nav-item:hover, .nav-item.active {
     background: rgba(0, 242, 255, 0.05);
     color: var(--accent-cyan);
+}
+
+.nav-item.locked {
+    cursor: not-allowed;
+    opacity: 0.4;
+    filter: grayscale(1);
+    pointer-events: none; /* Désactive le clic par défaut */
+    position: relative;
 }
 
 .nav-label {

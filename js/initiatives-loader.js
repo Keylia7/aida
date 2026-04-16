@@ -23,6 +23,7 @@ const VIEWS = {
 };
 
 window.addEventListener('DOMContentLoaded', async () => {
+    renderGlobalNavigation('initiatives')
     await loadInitiatives();
     await loadCandidateProfiles(); 
 });
