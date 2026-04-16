@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="trianglePath" d="M32 5L58 50H6L32 5Z" />
+    <circle id="circlePath" cx="32" cy="36" r="20" />
+
+    <mask id="circleOnly">
+      <rect width="64" height="64" fill="white" />
+      <use href="#trianglePath" fill="black" />
+    </mask>
+
+    <mask id="triangleOnly">
+      <rect width="64" height="64" fill="white" />
+      <use href="#circlePath" fill="black" />
+    </mask>
+  </defs>
+
+  <use href="#circlePath" fill="#00F2FF" fill-opacity="1" mask="url(#circleOnly)" />
+
+  <use href="#trianglePath" fill="#B2FBFF" mask="url(#triangleOnly)" />
+  
+  <line x1="32" y1="25" x2="32" y2="42" stroke="#B2C4C7" stroke-width="2" stroke-opacity="1" />
+</svg>
