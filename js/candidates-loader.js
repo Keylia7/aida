@@ -1,6 +1,15 @@
-let allCandidates = [];
+
+const AIDA_STATE = {
+    allCandidates: []
+};
+
 let selectedStatuses = new Set();
 const listContainer = document.getElementById('candidates-list');
+
+function getCandidateIdFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id');
+}
 
 async function loadCandidatesList() {
     
@@ -10,17 +19,29 @@ async function loadCandidatesList() {
         const response = await fetch('./../assets/data/candidates/summary/index-candidates.json');
         const fileNames = await response.json();
 
-        console.log(fileNames)
         const candidatePromises = fileNames.map(name => 
             fetch(`./../assets/data/candidates/${name}.json`).then(res => res.json())
         );
         
         const candidates = await Promise.all(candidatePromises);
-        allCandidates = candidates.filter(c => c !== null);
-        console.log(allCandidates);
+        candidates.forEach(candidate => {
+            AIDA_STATE.allCandidates[candidate.id] = candidate;
+        });
+        console.log("Système AIDA : Profils candidats synchronisés.");
 
         createStatusFilters();
         applyFilters();
+
+        const targetId = getCandidateIdFromURL();
+        if (targetId) {
+            setTimeout(() => {
+                const element = document.querySelector(`.candidate-item[data-id="${targetId}"]`);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    showCandidateDetail(targetId);
+                }
+            }, 100);
+        }
 
     } catch (error) {
         listContainer.innerHTML = '<p class="error">Erreur de synchronisation AIDA</p>';
@@ -28,11 +49,11 @@ async function loadCandidatesList() {
     }
 }
 
-function renderList(selectedCandidates = allCandidates){
+function renderList(selectedCandidates = AIDA_STATE.allCandidates){
 
     listContainer.innerHTML = '';
     
-    selectedCandidates.forEach(candidate => {
+    Object.values(selectedCandidates).forEach(candidate => {
         const item = document.createElement('div');
         item.className = 'candidate-item';
         item.dataset.id = candidate.id; 
@@ -43,29 +64,22 @@ function renderList(selectedCandidates = allCandidates){
         `;
 
         item.addEventListener('click', () => {
-            selectCandidate(candidate);
+            showCandidateDetail(candidate.id);
         });
 
         listContainer.appendChild(item);
     });
 }
 
-function selectCandidate(candidate) {
-    const detailsContainer = document.getElementById('candidate-details');
-    
-    detailsContainer.classList.add('has-selection');
-
-    document.querySelectorAll('.candidate-item').forEach(el => el.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-    console.log("Candidat sélectionné :", candidate.identity.firstName);
-}
 
 window.addEventListener('DOMContentLoaded', loadCandidatesList);
 
-
-function selectCandidate(candidate) {
+function showCandidateDetail(id) {
     const detailsContainer = document.getElementById('candidate-details');
     detailsContainer.classList.add('has-selection');
+
+    const candidate = AIDA_STATE.allCandidates[id];
+    if (!candidate) return;
 
     document.querySelectorAll('.candidate-item').forEach(el => el.classList.remove('active'));
     const selectedItem = document.querySelector(`.candidate-item[data-id="${candidate.id}"]`);
@@ -117,7 +131,7 @@ function createStatusFilters() {
     const filterContainer = document.getElementById('status-filters');
     
     // Extraction des statuts uniques
-    const statuses = [...new Set(allCandidates.map(c => c.recruitment.globalStatus))];
+    const statuses = [...new Set(Object.values(AIDA_STATE.allCandidates).map(c => c.recruitment.globalStatus))];
     
     filterContainer.innerHTML = '';
     statuses.forEach(status => {
@@ -142,7 +156,7 @@ function createStatusFilters() {
 }
 
 function applyFilters() {
-    const filtered = allCandidates.filter(candidate => {
+    const filtered = Object.values(AIDA_STATE.allCandidates).filter(candidate => {
         const matchesStatus = selectedStatuses.size === 0 || 
                              selectedStatuses.has(candidate.recruitment.globalStatus);
         return matchesStatus;

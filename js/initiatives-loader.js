@@ -8,15 +8,24 @@ const KANBAN_STATUSES = {
     "completed": "Terminées"
 };
 
+const AIDA_STATE = {
+    view: "strategy",
+    allInitiatives: [],
+    allCandidates: [],
+    selectedInitiative: null,
+    selectedCandidate: null,
+    currentWheelIndex: null
+};
+
 const VIEWS = {
     "strategy": ["proposed", "analysis", "cancelled", "to-launch"],
     "ops": ["to-launch", "in-progress", "completed"]
 };
 
-window.addEventListener('DOMContentLoaded', loadInitiatives);
-
-let currentView = "strategy";
-let loadedInitiatives = [];
+window.addEventListener('DOMContentLoaded', async () => {
+    await loadInitiatives();
+    await loadCandidateProfiles(); 
+});
 
 document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -35,18 +44,40 @@ async function loadInitiatives() {
             fetch(`./../assets/data/initiatives/${name}.json`).then(res => res.json())
         );
         
-        loadedInitiatives = await Promise.all(promises);
-        
-        initializeBoard(currentView); 
+        AIDA_STATE.allInitiatives = await Promise.all(promises);
+        console.log("Système AIDA : Initiatives synchronisées.");
+
+        initializeBoard(AIDA_STATE.view); 
     } catch (error) {
         console.error("Erreur AIDA Initiatives:", error);
+    }
+}
+
+async function loadCandidateProfiles() {
+    try {
+        const response = await fetch('./../assets/data/candidates/summary/index-candidates.json');
+        const fileNames = await response.json();
+
+        const promises = fileNames.map(name => 
+            fetch(`./../assets/data/candidates/${name}.json`).then(res => res.json())
+        );
+        
+        const profiles = await Promise.all(promises);
+        
+        profiles.forEach(profile => {
+            AIDA_STATE.allCandidates[profile.id] = profile;
+        });
+        
+        console.log("Système AIDA : Profils candidats synchronisés.");
+    } catch (error) {
+        console.error("Erreur lors du chargement des profils :", error);
     }
 }
 
 function initializeBoard(viewName) {
     const board = document.getElementById('kanban-board');
     board.innerHTML = '';
-    currentView = viewName;
+    AIDA_STATE.view = viewName;
 
     const columnsToDisplay = VIEWS[viewName];
 
@@ -61,7 +92,7 @@ function initializeBoard(viewName) {
         board.appendChild(col);
     });
     
-    renderCards(loadedInitiatives);
+    renderCards(AIDA_STATE.allInitiatives);
 }
 
 function renderCards(initiatives) {
@@ -73,6 +104,7 @@ function renderCards(initiatives) {
 
         const card = document.createElement('div');
         card.className = 'initiative-card';
+        card.setAttribute('data-id', init.id);
         card.innerHTML = `
             <div class="card-header">
                 <h4>${init.title}</h4>
@@ -108,10 +140,17 @@ function renderCards(initiatives) {
 
 /** CONSOLE BEHAVIOR */
 
-let currentInitiative = null;
-
 function showInitiativeDetails(init) {
-    currentInitiative = init;
+    document.querySelectorAll('.initiative-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+
+    const selectedCard = document.querySelector(`.initiative-card[data-id="${init.id}"]`);
+    if (selectedCard) {
+        selectedCard.classList.add('selected');
+    }
+
+    AIDA_STATE.selectedInitiative = init;
     const consoleEl = document.getElementById('initiative-console');
     consoleEl.classList.add('active');
 
@@ -149,6 +188,16 @@ function showInitiativeDetails(init) {
                 ${candidatesListHtml}
             </div>
         </div>
+
+        <div class="console-divider" onclick="closeDiagnostic()">
+            <div class="divider-line"></div>
+            <div class="divider-handle">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+        </div>
+
         <div class="console-column analysis-panel" style="display: flex; flex-direction: column; height: 100%;">   
         </div>
     `;
@@ -186,8 +235,17 @@ function renderProcessSection(process) {
 }
 
 function toggleConsole() {
-    const consoleElement = document.getElementById('initiative-console');
-    consoleElement.classList.toggle('active');
+    const consoleEl = document.getElementById('initiative-console');
+    const isClosing = consoleEl.classList.contains('active');
+
+    if (isClosing) {
+        consoleEl.classList.remove('active');
+        document.querySelectorAll('.initiative-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+    } else {
+        consoleEl.classList.add('active');
+    }
 }
 
 function getSupervisorColor(name) {
@@ -204,26 +262,6 @@ function getInitials(name) {
     return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
 }
 
-function renderCandidatesList(candidates, processes) {
-    return candidates.map(c => {
-        const completed = c.process_status.filter(s => s.status === 'completed').length;
-        const total = c.process_status.length;
-        const pct = Math.round((completed / total) * 100);
-
-        return `
-            <div class="candidate-item" onclick="showIndividualDetail('${c.id}')" id="item-${c.id}">
-                <div class="candidate-info">
-                    <span class="c-id">ID: ${c.id}</span>
-                </div>
-                <div class="status-pill status-${c.acceptation_status}">${c.acceptation_status}</div>
-                <div class="mini-progress-box" style="margin-left:15px; width:40px;">
-                    <div class="progress-bar" style="height:4px;"><div class="bar-fill" style="width:${pct}%"></div></div>
-                </div>
-            </div>
-        `;
-    }).join('');
-}
-
 function showIndividualDetail(candidateId) {
     document.querySelectorAll('.candidate-item').forEach(el => el.classList.remove('selected'));
     document.getElementById(`item-${candidateId}`).classList.add('selected');
@@ -231,44 +269,55 @@ function showIndividualDetail(candidateId) {
     const content = document.querySelector('.console-content');
     content.classList.add('show-details');
 
-    const candidate = currentInitiative.candidates.find(c => c.id === candidateId);
-    const steps = candidate.process_status;
-    const focusIndex = getFocusedStepIndex(candidate, steps);
-    
+    AIDA_STATE.selectedCandidate = AIDA_STATE.selectedInitiative.candidates.find(c => c.id === candidateId);
+    const steps = AIDA_STATE.selectedCandidate.process_status;
+    const focusIndex = getFocusedStepIndex(AIDA_STATE.selectedCandidate);
+    AIDA_STATE.currentWheelIndex = focusIndex;
+
     const detailPanel = document.querySelector('.analysis-panel');
 
-    let wheelHtml = steps.map((step, index) => {        
-        let displayClass = 'far';
-        if (index === focusIndex) displayClass = 'focus';
-        else if (index === focusIndex - 1 || index === focusIndex + 1) displayClass = 'adjacent';
+    let rejected_index = -1;
+    if (AIDA_STATE.selectedCandidate.acceptation_status == "rejected") rejected_index = focusIndex;
 
+    const individualStepperHtml = steps.map((step, i) => {
+        const isActive = i === focusIndex ? 'active-focus' : '';
+        const statusClass = (i === rejected_index) ? 'last-failed' : step.status;
+        return `<div class="mini-step ${statusClass} ${step.status} ${isActive}" 
+                     data-index="${i}" 
+                     onclick="jumpToStep(${i})"></div>`;
+    }).join('');
+
+    const timelineHtml = steps.map((step, i) => {
+        const label = get_process_label(AIDA_STATE.selectedInitiative.process, step.process_id);
+        const errorClass = (i === rejected_index) ? 'last-failed' : '';
         return `
-            <div class="wheel-step ${displayClass}">
-                <span class="step-text ${step.status}">
-                    <span class="step-label-main">${get_process_label(currentInitiative.process, step.process_id)}</span>
-                </span>
+            <div class="timeline-step" data-index="${i}" id="step-${i}">
+                <div class="step-marker ${step.status} ${errorClass}"></div>
+                <div class="step-content">
+                    <span class="step-label">${label}</span>
+                    <span class="step-status-text">${step.status.toUpperCase()}</span>
+                </div>
             </div>
         `;
     }).join('');
 
+
+    const legendDotClass = (rejected_index === -1) ? "dot-completed" : "dot-status-mixed";
     detailPanel.innerHTML = `
-       
-        <div class="wheel-header" style="margin-bottom: 10px;">
-            <h4 style="font-size:0.75rem; color:var(--accent-cyan); margin:0;">DIAGNOSTIC : ${candidateId}</h4>
-        </div>
-
-         <div class="diagnostic-frame">
-            <div class="individual-wheel">
-                ${wheelHtml}
+        <div class="diagnostic-frame">
+            <div class="indiv-stepper">${individualStepperHtml}</div>
+            <div class="timeline-container custom-scrollbar" id="timeline-scroll">
+                ${timelineHtml}
             </div>
-
             <div class="wheel-legend">
-                <div class="legend-item"><span class="legend-dot dot-pending"></span> En attente</div>
+                <div class="legend-item"><span class="legend-dot dot-pending"></span> Attente</div>
                 <div class="legend-item"><span class="legend-dot dot-progress"></span> En cours</div>
-                <div class="legend-item"><span class="legend-dot dot-completed"></span> Terminé</div>
+                <div class="legend-item"><span class="legend-dot ${legendDotClass}"></span> Terminé</div>
             </div>
         </div>
     `;
+
+    setTimeout(() => jumpToStep(focusIndex), 100);
 }
 
 function get_process_label(processes, process_id){
@@ -276,16 +325,84 @@ function get_process_label(processes, process_id){
     return process ? process.label : "Label inconnu";
 }
 
-function getFocusedStepIndex(candidate, steps) {
+function getFocusedStepIndex(candidate) {
     if (candidate.acceptation_status === 'rejected') {
         const lastCompleted = [...candidate.process_status].reverse().find(s => s.status === 'completed');
-        return lastCompleted ? steps.findIndex(st => st.id === lastCompleted.process_id) : 0;
+        return lastCompleted ? candidate.process_status.findIndex(st => st.process_id === lastCompleted.process_id) : 0;
     }
     
     if (candidate.acceptation_status === 'accepted') {
-        return steps.length - 1;
+        return candidate.process_status.length - 1;
     }
 
     const firstActive = candidate.process_status.find(s => s.status !== 'completed');
-    return firstActive ? steps.findIndex(st => st.process_id === firstActive.process_id) : 0;
+    return firstActive ? candidate.process_status.findIndex(st => st.process_id === firstActive.process_id) : 0;
+}
+
+function jumpToStep(index) {
+    AIDA_STATE.currentWheelIndex = index;
+    
+    const target = document.getElementById(`step-${index}`);
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    document.querySelectorAll('.timeline-step').forEach(s => s.classList.remove('focus'));
+    target.classList.add('focus');
+
+    document.querySelectorAll('.mini-step').forEach((s, i) => {
+        s.classList.toggle('active-focus', i === index);
+    });
+}
+
+function renderCandidatesList(candidates) {
+    return candidates.map(c => {
+        const profile = AIDA_STATE.allCandidates[c.id];
+        const firstName = profile ? profile.identity.firstName : "";
+        const lastName = profile ? profile.identity.lastName : c.id;
+        const jobTitle = profile ? profile.identity.currentSituation : "Profil inconnu";
+        
+        const completed = c.process_status.filter(s => s.status === 'completed').length;
+        const total = c.process_status.length;
+        const pct = Math.round((completed / total) * 100);
+
+        return `
+            <div class="candidate-item" onclick="showIndividualDetail('${c.id}')" id="item-${c.id}">
+                <div class="candidate-identity">
+                    <div class="name-row">
+                        <span class="c-name">${firstName} ${lastName}</span>
+                        <a href="candidats.html?id=${c.id}" class="external-link-icon" title="Voir la fiche complète" onclick="event.stopPropagation();">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                    <span class="c-job">${jobTitle}</span>
+                </div>
+
+                <div class="candidate-metrics">
+                    <div class="status-pill status-${c.acceptation_status}">${c.acceptation_status}</div>
+                    <div class="mini-progress-wrapper">
+                        <div class="progress-label">${pct}%</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-fill" style="width: ${pct}%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+
+function closeDiagnostic() {
+    const content = document.querySelector('.console-content');
+    content.classList.remove('show-details');
+    
+    document.querySelectorAll('.candidate-item').forEach(el => el.classList.remove('selected'));
+
+    AIDA_STATE.selectedCandidate = null;
+    AIDA_STATE.currentWheelIndex = null;
 }
