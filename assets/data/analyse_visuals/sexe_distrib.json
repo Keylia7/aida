@@ -1,0 +1,16 @@
+{
+    "id": "v-sexe-distrib",
+    "title": "RÉPARTITION PAR SEXE",
+    "required_criteria": ["sexe"],
+    "visual_config": {
+        "type": "doughnut",
+        "cutout": "75%",
+        "show_legend": true,
+        "color_type": "h_f"
+    },
+    "layout": {
+        "default_width": "medium",
+        "min_height": "350px"
+    },
+    "rationale": "Assurer un équilibre miroir de la population de référence pour garantir la représentativité biologique du panel."
+}

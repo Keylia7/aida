@@ -5,6 +5,7 @@
 .page-analyses .app-container {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
 /* ------------------*/
@@ -105,16 +106,34 @@
     border-color: var(--accent-cyan);
 }
 
+.crit-count {
+    font-family: 'Orbitron', sans-serif; /* Pour le look tech */
+    font-size: 0.7rem;
+    color: var(--accent-cyan-dim);
+    margin-left: 5px;
+    opacity: 0.7;
+    font-weight: normal;
+}
+
+input:checked ~ .crit-label .crit-count {
+    color: var(--accent-cyan);
+    opacity: 1;
+    text-shadow: 0 0 5px var(--accent-cyan);
+}
+
 /* --------------------------*/
 /* ANALYSIS WORKSPACE HEADER */
 /* --------------------------*/
 
 .analysis-workspace {
     flex: 1; 
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden; 
     background: var(--bg-dark);
 }
 .workspace-header {
@@ -124,7 +143,6 @@
     padding: 20px 30px;
     background: rgba(10, 25, 47, 0.4);
     border-bottom: 1px solid var(--border-color);
-    margin-bottom: 25px;
     border-radius: 4px;
 }
 .global-kpi {
@@ -226,11 +244,28 @@
 /* ANALYSIS WORKSPACE GRID   */
 /* --------------------------*/
 
-.analysis-grid {
+.analysis-grid{
+    margin: 15px;
+    height: auto; 
+    min-height: min-content;
+}
+
+.analysis-grid.grid-mode {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 20px;
-    padding: 20px;
+
+}
+
+.analysis-grid.focus-mode {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 30px;
+}
+
+.analysis-grid.focus-mode .analysis-card {
+    margin: 0 auto;
+    width: 100%;
 }
 
 .analysis-card {
@@ -263,6 +298,7 @@
     padding: 20px;
     min-height: 250px;
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
 }
@@ -271,6 +307,7 @@
     padding: 10px 15px;
     background: rgba(0, 0, 0, 0.2);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
 }
 
 .rationale .label {

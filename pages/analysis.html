@@ -19,59 +19,6 @@
             </header>
             
             <div class="scroll-list">
-                <div class="scroll-item compact-group">
-                    <h3 class="compact-group-title">DÉMOGRAPHIE</h3>
-                    <ul class="criteria-tree">
-                        <li>
-                            <label class="tree-node">
-                                <input type="checkbox" data-criteria="sexe" checked>
-                                <span class="custom-checkbox"></span> Sexe
-                            </label>
-                        </li>
-                        <li>
-                            <label class="tree-node">
-                                <input type="checkbox" data-criteria="age">
-                                <span class="custom-checkbox"></span> Âge
-                            </label>
-                        </li>
-                        <li>
-                            <label class="tree-node">
-                                <input type="checkbox" data-criteria="geographie">
-                                <span class="custom-checkbox"></span> Géographie
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="scroll-item compact-group">
-                    <h3 class="compact-group-title">PSYCHOLOGIE</h3>
-                    <ul class="criteria-tree">
-                        <li>
-                            <label class="tree-node">
-                                <input type="checkbox" data-criteria="ocean">
-                                <span class="custom-checkbox"></span> Modèle OCEAN
-                            </label>
-                        </li>
-                        <li>
-                            <label class="tree-node">
-                                <input type="checkbox" data-criteria="resilience">
-                                <span class="custom-checkbox"></span> Résilience
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="scroll-item compact-group">
-                    <h3 class="compact-group-title">COMPÉTENCES</h3>
-                    <ul class="criteria-tree">
-                        <li>
-                            <label class="tree-node">
-                                <input type="checkbox" data-criteria="skills">
-                                <span class="custom-checkbox"></span> Arbre de compétences
-                            </label>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </aside>
 
@@ -88,12 +35,12 @@
                 </div>
                 
                 <div class="view-options">
-                    <button class="view-btn active" title="Vue Grille">
+                    <button class="view-btn active" id="btn-grid" title="Vue Grille">
                         <svg width="36" height="36">
                             <use href="assets/svg/icons.svg#four_square"></use>
                         </svg>
                     </button>
-                    <button class="view-btn active" title="Vue Grille">
+                    <button class="view-btn active" id="btn-focus" title="Vue Plein Ecran">
                         <svg width="36" height="36">
                             <use href="assets/svg/icons.svg#focus_expand"></use>
                         </svg>
@@ -101,28 +48,7 @@
                 </div>
             </header>
 
-            <div class="analysis-grid" id="analysis-grid">
-                <div class="analysis-card">
-                    <div class="card-header">
-                        <h4 class="card-title">RÉPARTITION PAR SEXE</h4>
-                        <div class="card-actions">
-                            <button class="close-button">✕</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card-content">
-                        <div class="chart-container">
-                            <div class="placeholder-graphic">Graphique en attente...</div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <div class="rationale">
-                            <span class="label">RATIONNEL :</span>
-                            <p>Assurer un équilibre miroir de la population de référence.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="analysis-grid grid-mode" id="analysis-grid">
             </div>
         </main>
     </div>
@@ -140,6 +66,7 @@
 
     <script src="js/config-nav.js"></script>
     <script src="js/analysis-loader.js"></script>
-
+    <script src="js/visual-engine.js"></script>
+    <script src="js/vendor/chart.umd.min.js"></script>
 </body>
 </html>

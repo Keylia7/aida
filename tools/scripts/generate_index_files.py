@@ -12,6 +12,16 @@ GENERATION_SUMMARY_DATA = [
         "type" : "initiatives",
         "data_path" : "assets/data/initiatives",
         "index_file_path" : os.path.join("assets/data/initiatives", "summary", "index-initiatives.json")
+    },
+    {   
+        "type" : "criteria",
+        "data_path" : "assets/data/criteria",
+        "index_file_path" : os.path.join("assets/data/criteria", "summary", "index-criteria.json")
+    },
+    {   
+        "type" : "analyse_visuals",
+        "data_path" : "assets/data/analyse_visuals",
+        "index_file_path" : os.path.join("assets/data/analyse_visuals", "summary", "index-analyse_visuals.json")
     }
 ]
 

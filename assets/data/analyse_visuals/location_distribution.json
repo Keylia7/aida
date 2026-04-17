@@ -1,0 +1,16 @@
+{
+    "id": "v-location-distrib",
+    "title": "Répartition Géographique",
+    "required_criteria": ["location"],
+    "visual_config": {
+        "type": "doughnut",
+        "cutout": "70%",
+        "show_legend": true,
+        "color_scheme": "cyan_multi"
+    },
+    "layout": {
+        "default_width": "medium",
+        "min_height": "350px"
+    },
+    "rationale": "Analyse de l'origine environnementale pour garantir une diversité des capacités d'adaptation (autonomie rurale vs densité urbaine)."
+}

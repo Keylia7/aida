@@ -1,0 +1,16 @@
+{
+    "id": "v-age-pyramid",
+    "title": "Pyramide des Âges",
+    "required_criteria": ["age"],
+    "visual_config": {
+        "type": "horizontalBar",
+        "stacking": true,
+        "show_legend": true,
+        "color_scheme": "cyan_gradient"
+    },
+    "layout": {
+        "default_width": "full",
+        "min_height": "400px"
+    },
+    "rationale": "Analyse de la pyramide des âges pour garantir la pérennité démographique du dôme sur plusieurs cycles."
+}

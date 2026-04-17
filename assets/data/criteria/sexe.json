@@ -1,6 +1,7 @@
 {
   "criteria": "sexe",
   "type": "demography",
+  "label": "Sexe",
   "description": "Répartition par genre (Miroir Population Française)",
   "unit": "catégorie",
   "targets": [

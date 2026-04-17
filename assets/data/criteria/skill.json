@@ -1,5 +1,5 @@
 {
-  "criteria": "skills",
+  "criteria": "skill",
   "type": "skills",
   "label": "Matrice des Compétences",
   "description": "Évaluation du capital technique et social du panel (Échelle 0-5)",

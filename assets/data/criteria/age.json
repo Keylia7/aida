@@ -1,54 +1,72 @@
 {
   "criteria": "age",
+  "label": "Âge",
   "type": "demography",
-  "description": "Répartition démographique par décennies (Miroir Population Française)",
+  "description": "Répartition démographique par décennies avec segmentation par sexe",
   "unit": "ans",
   "targets": [
     {
       "label": "Enfants (0-9)",
+      "short_label":"0-9",
       "range": { "min": 0, "max": 9 },
-      "percentage": 11.0
+      "percentage": 11.0,
+      "split": { "m": 5.6, "f": 5.4 }
     },
     {
       "label": "Ados (10-19)",
+      "short_label":"10-19",
       "range": { "min": 10, "max": 19 },
       "percentage": 12.0,
-      "rationale": "Tranche incluant les collégiens et lycéens"
+      "split": { "m": 6.1, "f": 5.9 },
+      "rationale": "Tranche incluant les collégiens et lycéens."
     },
     {
       "label": "Jeunes Adultes (20-29)",
+      "short_label":"20-29",
       "range": { "min": 20, "max": 29 },
       "percentage": 11.0,
-      "rationale": "Entrée dans la vie active, forte mobilité."
+      "split": { "m": 5.5, "f": 5.5 },
+      "rationale": "Entrée dans la vie active, équilibre de mobilité."
     },
     {
       "label": "Actifs 1 (30-39)",
+      "short_label":"30-39",
       "range": { "min": 30, "max": 39 },
       "percentage": 12.5,
-      "rationale": "Pic de constitution des foyers et consommation liée au logement."
+      "split": { "m": 6.2, "f": 6.3 },
+      "rationale": "Pic de constitution des foyers."
     },
     {
       "label": "Actifs 2 (40-49)",
+      "short_label":"40-49",
       "range": { "min": 40, "max": 49 },
       "percentage": 13.0,
-      "rationale": "Tranche charnière de l'influence sociétale et professionnelle."
+      "split": { "m": 6.4, "f": 6.6 },
+      "rationale": "Tranche charnière de l'influence sociétale."
     },
     {
       "label": "Actifs 3 (50-59)",
+      "short_label":"50-59",
       "range": { "min": 50, "max": 59 },
       "percentage": 13.5,
-      "rationale": "Revenus souvent à leur maximum."
+      "split": { "m": 6.6, "f": 6.9 },
+      "rationale": "Transition vers la fin de carrière."
     },
     {
       "label": "Seniors 1 (60-70)",
+      "short_label":"60-70",
       "range": { "min": 60, "max": 70 },
       "percentage": 12.0,
-      "rationale": "Transition retraite. "
+      "split": { "m": 5.7, "f": 6.3 },
+      "rationale": "Début de la divergence d'espérance de vie."
     },
     {
       "label": "Grands Seniors (71+)",
+      "short_label":"71+",
       "range": { "min": 71, "max": 120 },
-      "percentage": 15.0
+      "percentage": 15.0,
+      "split": { "m": 6.2, "f": 8.8 },
+      "rationale": "Surreprésentation féminine marquée."
     }
   ]
 }

@@ -1,6 +1,7 @@
 {
-  "criteria": "psychologie_ocean",
+  "criteria": "psychologie-ocean",
   "type": "psychology",
+  "label": "Modèle OCEAN",
   "description": "Répartition des types de personnalité",
   "unit": "profil_type",
   "scales": {
