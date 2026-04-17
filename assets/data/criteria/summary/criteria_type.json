@@ -1,0 +1,16 @@
+{
+    "list": [
+        {
+            "type": "demography",
+            "name": "Démographie"
+        },
+        {
+            "type": "psychology",
+            "name": "Psychologie"
+        },
+        {
+            "type": "skills",
+            "name": "Compétences"
+        }
+    ]
+}

@@ -1,0 +1,287 @@
+/* ------------------*/
+/* LAYOUT GLOBAL     */
+/* ------------------*/
+
+.page-analyses .app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* ------------------*/
+/* SEARCH PANEL      */
+/* ------------------*/
+
+.search-panel.compact {
+    width: auto;
+    min-width: 180px;
+    padding: 15px 10px;
+}
+
+.scroll-item.compact-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.05);
+}
+
+.compact-group-title {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    padding-left: 5px;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.criteria-tree {
+    list-style: none;
+    padding-left: 0px; 
+    position: relative;
+}
+
+.criteria-tree::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 16px;
+    width: 1px;
+    padding: 0;
+    background: var(--border-color);
+}
+
+.criteria-tree li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px; 
+}
+
+.criteria-tree li::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 10px; 
+    width: 10px;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.tree-node {
+    font-size: 0.75rem; 
+    white-space: nowrap; 
+}
+
+.tree-node input {
+    display: none;
+}
+
+.custom-checkbox {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--border-color);
+    background: rgba(0, 242, 255, 0.05);
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.tree-node input:checked + .custom-checkbox {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 8px var(--accent-cyan);
+    border-color: var(--accent-cyan);
+}
+
+.tree-node input:checked ~ span:last-child {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 5px rgba(0, 242, 255, 0.2);
+}
+
+.tree-node:hover {
+    color: var(--text-main);
+}
+.tree-node:hover .custom-checkbox {
+    border-color: var(--accent-cyan);
+}
+
+/* --------------------------*/
+/* ANALYSIS WORKSPACE HEADER */
+/* --------------------------*/
+
+.analysis-workspace {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; 
+    background: var(--bg-dark);
+}
+.workspace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: rgba(10, 25, 47, 0.4);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 25px;
+    border-radius: 4px;
+}
+.global-kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 300px;
+}
+
+.global-kpi .label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+}
+
+.kpi-gauge-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 242, 255, 0.1);
+    border-radius: 2px;
+}
+
+.kpi-fill-bg {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.kpi-fill {
+    height: 100%;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px var(--accent-cyan);
+    transition: width 1s ease-out; /* Animation fluide de la jauge */
+}
+
+.kpi-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: var(--accent-cyan);
+    font-weight: bold;
+    min-width: 50px;
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
+}
+
+/* Bloc View Options (Droite) */
+.view-options {
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.view-btn use {
+    color: var(--accent-cyan);
+}
+
+.view-btn svg {
+    opacity: 0.5;
+}
+
+.view-btn svg:hover {
+    opacity: 1;
+}
+
+.view-btn .icon-svg {
+    transition: all 0.2s ease;
+}
+
+.view-btn.active .icon-svg {
+    filter: drop-shadow(0 0 3px rgba(0, 242, 255, 0.5));
+}
+
+/* --------------------------*/
+/* ANALYSIS WORKSPACE GRID   */
+/* --------------------------*/
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.analysis-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.card-header {
+    padding: 12px 15px;
+    background: rgba(0, 242, 255, 0.03);
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h4 {
+    margin: 0;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-cyan);
+}
+
+.card-content {
+    padding: 20px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-footer {
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rationale .label {
+    font-size: 0.6rem;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+.rationale p {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+}

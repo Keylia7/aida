@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <base href="./../">
+    <title>AIDA | Analyse du panel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/analysis.css">
+    <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
+    <link href="assets/fonts/Orbitron-VariableFont_wght.ttf" rel="stylesheet">
+</head>
+<body class="page-analyses">
+    <div class="app-container">
+        <nav class="side-nav" id="main-nav"></nav>
+
+        <aside class="search-panel compact">
+            <header class="panel-header">
+                <h2>CRITÈRES</h2>
+            </header>
+            
+            <div class="scroll-list">
+                <div class="scroll-item compact-group">
+                    <h3 class="compact-group-title">DÉMOGRAPHIE</h3>
+                    <ul class="criteria-tree">
+                        <li>
+                            <label class="tree-node">
+                                <input type="checkbox" data-criteria="sexe" checked>
+                                <span class="custom-checkbox"></span> Sexe
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-node">
+                                <input type="checkbox" data-criteria="age">
+                                <span class="custom-checkbox"></span> Âge
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-node">
+                                <input type="checkbox" data-criteria="geographie">
+                                <span class="custom-checkbox"></span> Géographie
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="scroll-item compact-group">
+                    <h3 class="compact-group-title">PSYCHOLOGIE</h3>
+                    <ul class="criteria-tree">
+                        <li>
+                            <label class="tree-node">
+                                <input type="checkbox" data-criteria="ocean">
+                                <span class="custom-checkbox"></span> Modèle OCEAN
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-node">
+                                <input type="checkbox" data-criteria="resilience">
+                                <span class="custom-checkbox"></span> Résilience
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="scroll-item compact-group">
+                    <h3 class="compact-group-title">COMPÉTENCES</h3>
+                    <ul class="criteria-tree">
+                        <li>
+                            <label class="tree-node">
+                                <input type="checkbox" data-criteria="skills">
+                                <span class="custom-checkbox"></span> Arbre de compétences
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main class="analysis-workspace">
+            <header class="workspace-header">
+                <div class="global-kpi">
+                    <span class="label">REPRÉSENTATIVITÉ GLOBALE</span>
+                    <div class="kpi-gauge-container">
+                        <div class="kpi-fill-bg">
+                            <div class="kpi-fill" style="width: 87.4%;"></div>
+                        </div>
+                        <span class="kpi-value">87.4%</span>
+                    </div>
+                </div>
+                
+                <div class="view-options">
+                    <button class="view-btn active" title="Vue Grille">
+                        <svg width="36" height="36">
+                            <use href="assets/svg/icons.svg#four_square"></use>
+                        </svg>
+                    </button>
+                    <button class="view-btn active" title="Vue Grille">
+                        <svg width="36" height="36">
+                            <use href="assets/svg/icons.svg#focus_expand"></use>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <div class="analysis-grid" id="analysis-grid">
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h4 class="card-title">RÉPARTITION PAR SEXE</h4>
+                        <div class="card-actions">
+                            <button class="close-button">✕</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="chart-container">
+                            <div class="placeholder-graphic">Graphique en attente...</div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="rationale">
+                            <span class="label">RATIONNEL :</span>
+                            <p>Assurer un équilibre miroir de la population de référence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="system-bar">
+        <div class="status-item">
+            <span class="dot pulse"></span> SYSTEM: OPERATIONAL
+        </div>
+        <div class="status-item">
+            ENC: AES-256 SECURED
+        </div>
+        <div class="status-item" id="live-clock">
+            </div>
+    </footer>
+
+    <script src="js/config-nav.js"></script>
+    <script src="js/analysis-loader.js"></script>
+
+</body>
+</html>

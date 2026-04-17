@@ -164,7 +164,7 @@ function showInitiativeDetails(init) {
         </div>
         <div class="header-right">
             <span class="supervisor-info">SUPERVISEUR <span class="supervisor-name">${init.supervisor}</span></span>
-            <button class="close-console" onclick="toggleConsole()" title="Fermer le terminal">
+            <button class="close-button" onclick="toggleConsole()" title="Fermer le terminal">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M1 1L11 11M11 1L1 11" stroke-linecap="round"/>
                 </svg>

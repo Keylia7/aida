@@ -1,0 +1,55 @@
+{
+  "criteria": "psychologie_ocean",
+  "type": "psychology",
+  "description": "Répartition des types de personnalité",
+  "unit": "profil_type",
+  "scales": {
+    "min": 0,
+    "max": 100,
+    "thresholds": {
+      "low": { "min": 0, "max": 39 },
+      "mid": { "min": 40, "max": 60 },
+      "high": { "min": 61, "max": 100 }
+    }
+  },
+  "mapping_rules": {
+    "logic": [
+      { "profile": "role_model", "requirements": { "N": "low", "O": "high", "C": "high", "E": "high", "A": "high" } },
+      { "profile": "self_centered", "requirements": { "E": "high", "O": "low", "C": "low", "A": "low" } },
+      { "profile": "reserved", "requirements": { "N": "low", "E": "low", "O": "low", "A": "mid", "C": "mid" } },
+      { "profile": "average", "requirements": { "N": "high", "E": "high", "O": "low", "A": "mid" } }
+    ]
+  },
+  "targets": [
+    {
+      "label": "La Moyenne (Average)",
+      "value": "average",
+      "percentage": 40.0,
+      "rationale": "Profil le plus commun : haut en névrosisme et extraversion, bas en ouverture. Représente le socle social standard."
+    },
+    {
+      "label": "Les Réservés (Reserved)",
+      "value": "reserved",
+      "percentage": 25.0,
+      "rationale": "Stables émotionnellement, mais peu ouverts et plutôt introvertis. Assurent la stabilité sans faire de vagues."
+    },
+    {
+      "label": "Les Modèles (Role Models)",
+      "value": "role_model",
+      "percentage": 15.0,
+      "rationale": "Bas en névrosisme, hauts dans tous les autres traits. Profils de leaders naturels et de médiateurs, plus rares."
+    },
+    {
+      "label": "Les Egocentrés (Self-Centered)",
+      "value": "self_centered",
+      "percentage": 15.0,
+      "rationale": "Hauts en extraversion, bas en agréabilité, conscience et ouverture. Profils potentiellement disruptifs en groupe."
+    },
+    {
+      "label": "Les Profils Rares (Atypiques)",
+      "value": "atypical",
+      "percentage": 5.0,
+      "rationale": "Inclut les profils extrêmes (ex: très haute ouverture + très haute conscience). Souvent les moteurs d'innovation radicale."
+    }
+  ]
+}

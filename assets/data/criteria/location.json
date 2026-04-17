@@ -1,0 +1,45 @@
+{
+  "criteria": "location",
+  "type": "demography",
+  "label": "Géographie",
+  "description": "Répartition par densité de zone de résidence",
+  "unit": "catégorie",
+  "targets": [
+    {
+      "value": "isole",
+      "label": "Zone Isolée",
+      "percentage": 5.0,
+      "rationale": "Profils hautement autonomes, cruciaux pour la maintenance hors-système."
+    },
+    {
+      "value": "rural",
+      "label": "Rural Diffus",
+      "percentage": 18.0,
+      "rationale": "Base de résilience alimentaire et culture du bricolage."
+    },
+    {
+      "value": "periurbain",
+      "label": "Périurbain",
+      "percentage": 30.0,
+      "rationale": "Majorité statistique française ; équilibre entre confort et mobilité."
+    },
+    {
+      "value": "urbain_moyen",
+      "label": "Urbain Dense",
+      "percentage": 27.0,
+      "rationale": "Habitude de la mixité sociale et des services partagés."
+    },
+    {
+      "value": "hypercentre",
+      "label": "Cœur de Métropole",
+      "percentage": 15.0,
+      "rationale": "Profils habitués à la densité humaine et aux environnements hyper-technologiques."
+    },
+    {
+      "value": "littoral_insulaire",
+      "label": "Littoral / Insulaire",
+      "percentage": 5.0,
+      "rationale": "Gestion des risques climatiques et isolement géographique."
+    }
+  ]
+}

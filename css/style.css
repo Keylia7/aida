@@ -18,6 +18,53 @@ body {
     overflow: hidden; /* Pour le fond binaire */
 }
 
+
+/* --------------------------*/
+/* BUTTON STYLE              */
+/* --------------------------*/
+
+
+.close-button {
+    background: transparent;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    color: var(--accent-cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 2px; 
+    position: relative;
+    padding: 0;
+}
+
+.close-button:hover {
+    background: rgba(255, 68, 68, 0.1); 
+    border-color: var(--status-danger); 
+    color: var(--status-danger);
+    box-shadow: 0 0 8px rgba(255, 68, 68, 0.4);
+    transform: scale(1.05);
+}
+
+.close-button::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+}
+
+/* --------------------------*/
+/* A TRIER                   */
+/* --------------------------*/
+
 .dashboard {
     position: relative;
     z-index: 2;
@@ -279,14 +326,16 @@ h1 {
 
 /* Zone B */
 .search-panel {
-    width: 300px;
+    width: auto;
+    min-width: 250px;
     border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+    padding: 15px 10px;
 }
 
 .panel-header {
-    padding: 20px;
+    padding: 0px 20px;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -352,7 +401,7 @@ h1 {
     font-weight: bold;
 }
 
-.candidate-item {
+.scroll-item {
     display: flex;
     align-items: center;
     padding: 12px 20px;
@@ -361,7 +410,7 @@ h1 {
     transition: all 0.2s;
 }
 
-.candidate-item:hover {
+.scroll-item:hover {
     background: rgba(255, 255, 255, 0.02);
 }
 
@@ -511,3 +560,4 @@ h1 {
     color: var(--accent-cyan);
     opacity: 0.8;
 }
+

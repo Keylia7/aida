@@ -1,0 +1,41 @@
+{
+  "criteria": "skills",
+  "type": "skills",
+  "label": "Matrice des Compétences",
+  "description": "Évaluation du capital technique et social du panel (Échelle 0-5)",
+  "levels": {
+    "0": "Nul",
+    "1": "Notions",
+    "2": "Pratique",
+    "3": "Autonome",
+    "4": "Avancé",
+    "5": "Expert"
+  },
+  "targets": [
+    { "id": "agri", "label": "Agriculture Bio-intensive", "category": "hard", "distribution": { "0": 40, "1": 30, "2": 15, "3": 10, "4": 3, "5": 2 }, "rationale": "Nécessite une base de main-d'œuvre capable d'aider (1-2) et quelques experts." },
+    { "id": "maint", "label": "Maintenance Systèmes", "category": "hard", "distribution": { "0": 70, "1": 15, "2": 8, "3": 4, "4": 2, "5": 1 }, "rationale": "Compétence critique très spécialisée pour la survie des infrastructures." },
+    { "id": "elec", "label": "Électronique & Robotique", "category": "hard", "distribution": { "0": 75, "1": 15, "2": 5, "3": 3, "4": 1, "5": 1 }, "rationale": "Essentiel pour la réparation des automates du dôme." },
+    { "id": "code", "label": "Code & Algorithmique", "category": "hard", "distribution": { "0": 60, "1": 25, "2": 10, "3": 3, "4": 1, "5": 1 }, "rationale": "Permet l'adaptation des scripts de maintenance AIDA." },
+    { "id": "cyber", "label": "Cybersécurité", "category": "hard", "distribution": { "0": 85, "1": 10, "2": 2, "3": 1, "4": 1, "5": 1 }, "rationale": "Protection vitale contre les intrusions externes ou internes." },
+    { "id": "chim", "label": "Chimie & Pharmacopée", "category": "hard", "distribution": { "0": 80, "1": 10, "2": 5, "3": 3, "4": 1, "5": 1 }, "rationale": "Production locale de médicaments essentiels." },
+    { "id": "med_urg", "label": "Médecine d'urgence", "category": "hard", "distribution": { "0": 50, "1": 35, "2": 10, "3": 3, "4": 1, "5": 1 }, "rationale": "Tout le monde doit avoir des notions, quelques-uns doivent pouvoir opérer." },
+    { "id": "const", "label": "Construction & Structure", "category": "hard", "distribution": { "0": 60, "1": 20, "2": 10, "3": 5, "4": 3, "5": 2 }, "rationale": "Stabilité physique des modules d'habitation." },
+    { "id": "water_en", "label": "Gestion Eau & Énergie", "category": "hard", "distribution": { "0": 70, "1": 20, "2": 5, "3": 3, "4": 1, "5": 1 }, "rationale": "La ressource la plus précieuse du système clos." },
+    { "id": "meca", "label": "Mécanique Générale", "category": "hard", "distribution": { "0": 65, "1": 20, "2": 8, "3": 4, "4": 2, "5": 1 }, "rationale": "Entretien des pièces d'usure physiques." },
+    { "id": "botan", "label": "Botanique / Herboristerie", "category": "hard", "distribution": { "0": 70, "1": 20, "2": 5, "3": 3, "4": 1, "5": 1 }, "rationale": "Complémentaire à l'agriculture et à la pharmacie." },
+    { "id": "nav", "label": "Pilotage / Navigation", "category": "hard", "distribution": { "0": 90, "1": 5, "2": 2, "3": 1, "4": 1, "5": 1 }, "rationale": "Compétence de niche pour les drones et véhicules d'exploration." },
+    
+    { "id": "conflict", "label": "Médiation de Conflits", "category": "soft", "distribution": { "0": 20, "1": 30, "2": 30, "3": 10, "4": 7, "5": 3 }, "rationale": "Crucial pour éviter l'effondrement social en milieu clos." },
+    { "id": "ei", "label": "Intelligence Émotionnelle", "category": "soft", "distribution": { "0": 10, "1": 20, "2": 40, "3": 20, "4": 7, "5": 3 }, "rationale": "Lubrifiant social indispensable à la cohabitation." },
+    { "id": "pedag", "label": "Pédagogie & Transmission", "category": "soft", "distribution": { "0": 30, "1": 40, "2": 15, "3": 8, "4": 5, "5": 2 }, "rationale": "Assure que les savoirs ne meurent pas avec les individus." },
+    { "id": "lead", "label": "Leadership & Stratégie", "category": "soft", "distribution": { "0": 50, "1": 30, "2": 10, "3": 5, "4": 3, "5": 2 }, "rationale": "Nécessaire pour l'organisation des initiatives." },
+    { "id": "crisis", "label": "Communication de Crise", "category": "soft", "distribution": { "0": 60, "1": 25, "2": 8, "3": 4, "4": 2, "5": 1 }, "rationale": "Éviter la panique lors des incidents techniques." },
+    { "id": "crea", "label": "Créativité / Innovation", "category": "soft", "distribution": { "0": 20, "1": 40, "2": 25, "3": 10, "4": 3, "5": 2 }, "rationale": "Trouver des solutions hors-protocole." },
+    { "id": "crit_think", "label": "Pensée Critique", "category": "soft", "distribution": { "0": 15, "1": 30, "2": 35, "3": 10, "4": 7, "5": 3 }, "rationale": "Rempart contre les biais cognitifs collectifs." },
+    { "id": "resil_em", "label": "Résilience Émotionnelle", "category": "soft", "distribution": { "0": 10, "1": 25, "2": 40, "3": 15, "4": 7, "5": 3 }, "rationale": "Capacité à tenir sur le long terme sans craquer." },
+    { "id": "stress", "label": "Gestion du Stress", "category": "soft", "distribution": { "0": 10, "1": 30, "2": 40, "3": 10, "4": 7, "5": 3 }, "rationale": "Maintien de l'efficacité opérationnelle sous pression." },
+    { "id": "nego", "label": "Négociation", "category": "soft", "distribution": { "0": 40, "1": 30, "2": 20, "3": 5, "4": 3, "5": 2 }, "rationale": "Gestion des ressources et du temps collectif." },
+    { "id": "decision", "label": "Prise de Décision", "category": "soft", "distribution": { "0": 30, "1": 40, "2": 20, "3": 5, "4": 3, "5": 2 }, "rationale": "Réduction du temps de latence face aux problèmes." },
+    { "id": "agile_col", "label": "Collaboration Agile", "category": "soft", "distribution": { "0": 10, "1": 20, "2": 40, "3": 20, "4": 7, "5": 3 }, "rationale": "Méthode de travail standard pour le projet 500." }
+  ]
+}

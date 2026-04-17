@@ -92,4 +92,30 @@
             <path d="m9.228 13.148-.923.383"/>
         </g>
     </symbol>
+
+    <symbol id="four_square" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="8" height="8" rx="1" fill="currentColor"/>
+        <rect x="13" y="3" width="8" height="8" rx="1" fill="currentColor"/>
+        <rect x="3" y="13" width="8" height="8" rx="1" fill="currentColor"/>
+        <rect x="13" y="13" width="8" height="8" rx="1" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="focus_expand" viewBox="0 0 24 24">
+        <rect x="8" y="8" width="8" height="8" rx="1" fill="currentColor" opacity="0.6" />
+        
+        <g stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 3 8 L 3 3 L 8 3" />
+            <path d="M 5 5 L 7 7" opacity="0.8" stroke-width="1.5" />
+            
+            <path d="M 16 3 L 21 3 L 21 8" />
+            <path d="M 19 5 L 17 7" opacity="0.8" stroke-width="1.5" />
+            
+            <path d="M 21 16 L 21 21 L 16 21" />
+            <path d="M 19 19 L 17 17" opacity="0.8" stroke-width="1.5" />
+            
+            <path d="M 8 21 L 3 21 L 3 16" />
+            <path d="M 5 19 L 7 17" opacity="0.8" stroke-width="1.5" />
+        </g>
+    </symbol>
+    
 </svg>

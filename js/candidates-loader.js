@@ -60,7 +60,7 @@ function renderList(selectedCandidates = AIDA_STATE.allCandidates){
     
     Object.values(selectedCandidates).forEach(candidate => {
         const item = document.createElement('div');
-        item.className = 'candidate-item';
+        item.className = 'candidate-item scroll-item';
         item.dataset.id = candidate.id; 
         
         item.innerHTML = `

@@ -2,7 +2,7 @@ const NAV_CONFIG = [
     { id: 'home', label: 'Home', desc: '', icon_svg: "icon-home", url: 'index.html', locked: false },
     { id: 'candidats', label: 'Candidats', desc:'Gestion et fiches individuelles', icon_svg: "icon-candidats", url: 'pages/candidats.html', locked: false },
     { id: 'initiatives', label: 'Initiatives', desc:'Flux des projets de recrutement', icon_svg: "icon-initiatives", url: 'pages/initiatives.html', locked: false },
-    { id: 'analyses', label: 'Analyses', desc:'Objectifs & Répartition', icon_svg: "icon-analyse", url: '#', locked: true },
+    { id: 'analyses', label: 'Analyses', desc:'Objectifs & Répartition', icon_svg: "icon-analyse", url: 'pages/analysis.html', locked: false },
     { id: 'journal', label: 'Journal', desc:'Logs des activités système', icon_svg: "icon-journal", url: '#', locked: true },
     { id: 'simulation', label: 'Simulation', desc:"Moteur d'optimisation IA", icon_svg: "icon-simulations", url: '#', locked: true },
     { id: 'config', label: 'Configurations', desc:"Connecteurs & Paramètres", icon_svg: "icon-config", url: '#', locked: true }

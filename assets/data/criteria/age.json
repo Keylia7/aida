@@ -1,0 +1,54 @@
+{
+  "criteria": "age",
+  "type": "demography",
+  "description": "Répartition démographique par décennies (Miroir Population Française)",
+  "unit": "ans",
+  "targets": [
+    {
+      "label": "Enfants (0-9)",
+      "range": { "min": 0, "max": 9 },
+      "percentage": 11.0
+    },
+    {
+      "label": "Ados (10-19)",
+      "range": { "min": 10, "max": 19 },
+      "percentage": 12.0,
+      "rationale": "Tranche incluant les collégiens et lycéens"
+    },
+    {
+      "label": "Jeunes Adultes (20-29)",
+      "range": { "min": 20, "max": 29 },
+      "percentage": 11.0,
+      "rationale": "Entrée dans la vie active, forte mobilité."
+    },
+    {
+      "label": "Actifs 1 (30-39)",
+      "range": { "min": 30, "max": 39 },
+      "percentage": 12.5,
+      "rationale": "Pic de constitution des foyers et consommation liée au logement."
+    },
+    {
+      "label": "Actifs 2 (40-49)",
+      "range": { "min": 40, "max": 49 },
+      "percentage": 13.0,
+      "rationale": "Tranche charnière de l'influence sociétale et professionnelle."
+    },
+    {
+      "label": "Actifs 3 (50-59)",
+      "range": { "min": 50, "max": 59 },
+      "percentage": 13.5,
+      "rationale": "Revenus souvent à leur maximum."
+    },
+    {
+      "label": "Seniors 1 (60-70)",
+      "range": { "min": 60, "max": 70 },
+      "percentage": 12.0,
+      "rationale": "Transition retraite. "
+    },
+    {
+      "label": "Grands Seniors (71+)",
+      "range": { "min": 71, "max": 120 },
+      "percentage": 15.0
+    }
+  ]
+}

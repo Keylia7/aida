@@ -1,0 +1,20 @@
+{
+  "criteria": "sexe",
+  "type": "demography",
+  "description": "Répartition par genre (Miroir Population Française)",
+  "unit": "catégorie",
+  "targets": [
+    {
+      "label": "Femmes",
+      "value": "F",
+      "percentage": 51.5,
+      "rationale": "Majorité statistique naturelle."
+    },
+    {
+      "label": "Hommes",
+      "value": "H",
+      "percentage": 48.5,
+      "rationale": "Équilibre démographique."
+    }
+  ]
+}
