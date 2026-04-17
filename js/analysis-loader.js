@@ -225,8 +225,9 @@ function createCardElement(visual) {
                 const chart = Chart.getChart(`chart-${visual.id}`);
                 if (chart) chart.resize();
             }, 300);
+            updateWorkspace()
         }
-        updateWorkspace()
+        
     });
 
     div.querySelector('.close-button').addEventListener('click', (e) => {
