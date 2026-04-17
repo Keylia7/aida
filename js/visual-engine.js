@@ -2,6 +2,13 @@
  * VisualEngine - Moteur de rendu graphique AIDA
  * Centralise la logique Chart.js pour l'ensemble de l'application.
  */
+
+
+Chart.defaults.font.family = "'Orbitron', sans-serif";
+Chart.defaults.color = '#a0aec0'; 
+
+
+
 const VisualEngine = {
 
     getCSSVariable: function(varName) {
