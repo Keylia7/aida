@@ -127,14 +127,10 @@ input:checked ~ .crit-label .crit-count {
 
 .analysis-workspace {
     flex: 1; 
-    height: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
-
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
     background: var(--bg-dark);
+    height: 100vh;
+    display: block;
 }
 .workspace-header {
     display: flex;
@@ -236,6 +232,15 @@ input:checked ~ .crit-label .crit-count {
     transition: all 0.2s ease;
 }
 
+.view-btn.active {
+    opacity: 1;
+    filter: grayscale(0%);
+    border-color: var(--accent-cyan);
+    background: rgba(0, 242, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3),
+                inset 0 0 5px rgba(0, 242, 255, 0.2);
+}
+
 .view-btn.active .icon-svg {
     filter: drop-shadow(0 0 3px rgba(0, 242, 255, 0.5));
 }
@@ -245,27 +250,92 @@ input:checked ~ .crit-label .crit-count {
 /* --------------------------*/
 
 .analysis-grid{
-    margin: 15px;
-    height: auto; 
-    min-height: min-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px 20px 20px 70px; 
+    position: relative;
+    height: auto;
+}
+
+.analysis-grid::before {
+    content: ""; 
+    position: absolute;
+    left: 45px; 
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent-cyan), transparent);
+    opacity: 0.3;
 }
 
 .analysis-grid.grid-mode {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    display: flex;    
+    flex-wrap: wrap;    
+    align-items: stretch;
     gap: 20px;
+    padding: 15px 0px 15px 50px;
+    height: auto;
+}
 
+.analysis-card.collapsed-vertical {
+    position: absolute; 
+    left: 5px;
+    width: 35px;
+    min-width: 35px;
+    min-height: auto;
+    height: 160px;
+    margin: 0;
+    border-left: 3px solid var(--accent-cyan);
+    background: linear-gradient(to right, rgba(0, 242, 255, 0.15), transparent);
+    z-index: 10;
+}
+
+.analysis-card.collapsed-vertical .card-header {
+    width: 100%;
+    padding: 15px 0;
+    writing-mode: vertical-rl; /* Texte vertical */
+    transform: rotate(180deg); /* Lisible de bas en haut */
+    border-bottom: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.analysis-card.collapsed-vertical .card-title {
+    max-height: 130px;
+
+    font-size: 0.65rem;
+    white-space: nowrap;
+    letter-spacing: 1px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .analysis-grid.focus-mode {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 30px;
+    padding-left: 65px;
+    justify-content: center;
+}
+
+.analysis-grid.focus-mode .analysis-card:not(.collapsed-vertical) {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.analysis-grid.focus-mode .collapsed-vertical {
+    position: absolute;
 }
 
 .analysis-grid.focus-mode .analysis-card {
-    margin: 0 auto;
-    width: 100%;
+    min-height: auto;
+}
+
+.analysis-grid.focus-mode .card-content {
+    height: 450px;
 }
 
 .analysis-card {
@@ -274,6 +344,9 @@ input:checked ~ .crit-label .crit-count {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    width: 450px;       
+    min-height: 350px;  
+    height: auto;
     overflow: hidden;
     transition: transform 0.2s ease;
 }
@@ -292,6 +365,17 @@ input:checked ~ .crit-label .crit-count {
     font-size: 0.75rem;
     font-family: 'Orbitron', sans-serif;
     color: var(--accent-cyan);
+}
+
+.analysis-card.collapsed-vertical .card-content,
+.analysis-card.collapsed-vertical .card-footer,
+.analysis-card.collapsed-vertical .close-button{
+    display: none;
+}
+
+.analysis-card.collapsed-vertical:hover {
+    background: rgba(0, 242, 255, 0.2);
+    box-shadow: inset 0 0 15px rgba(0, 242, 255, 0.1);
 }
 
 .card-content {

@@ -80,7 +80,7 @@ body {
     padding: 0;
 }
 
-.close-button:hover {
+.close-button:hover{
     background: rgba(255, 68, 68, 0.1); 
     border-color: var(--status-danger); 
     color: var(--status-danger);
@@ -88,7 +88,7 @@ body {
     transform: scale(1.05);
 }
 
-.close-button::after {
+.close-button::after{
     content: '';
     position: absolute;
     bottom: -3px;

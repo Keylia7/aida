@@ -5,7 +5,8 @@ const AIDA_STATE = {
         active_criteria: new Set(),
         visuals_registry: []
     },
-    criteria_stats: {}
+    criteria_stats: {},
+    collapsed_visuals: new Set()
 };
 
 
@@ -139,16 +140,18 @@ function initViewButtons() {
     btnGrid.addEventListener('click', () => {
         btnGrid.classList.add('active');
         btnFocus.classList.remove('active');
-        grid.classList.remove('focus-mode');
-        grid.classList.add('grid-mode');
+        grid.classList.replace('focus-mode', 'grid-mode');
     });
 
     btnFocus.addEventListener('click', () => {
         btnFocus.classList.add('active');
         btnGrid.classList.remove('active');
-        grid.classList.remove('grid-mode');
-        grid.classList.add('focus-mode');
+        grid.classList.replace('grid-mode', 'focus-mode');
     });
+
+    setTimeout(() => {
+        Object.values(Chart.instances).forEach(chart => chart.resize());
+    }, 300);
 }
 
 function updateWorkspace() {
@@ -158,34 +161,48 @@ function updateWorkspace() {
         visual.required_criteria.every(crit => AIDA_STATE.analysis_state.active_criteria.has(crit))
     );
     renderVisualCards(visibleVisuals, grid);
+
 }
 
 function renderVisualCards(visuals, container) {
     container.innerHTML = '';
+    let collapsedCount = 0; 
 
     if (visuals.length === 0) {
-        container.innerHTML = '<div class="analysis-placeholder">Sélectionnez des critères pour générer une analyse...</div>';
+        container.innerHTML = '<div class="analysis-placeholder">...</div>';
         return;
     }
 
     visuals.forEach(visual => {
         const card = createCardElement(visual);
         container.appendChild(card);
-        
+
+        console.log("render visual cards");
+        if (AIDA_STATE.collapsed_visuals.has(visual.id)) {
+            card.classList.add('collapsed-vertical');
+            console.log("collapsed !");
+            
+            const topPosition = (collapsedCount * 160); 
+            card.style.top = `${topPosition}px`;
+            
+            collapsedCount++; // On incrémente pour la suivante
+        }
+
         initializeChart(visual);
     });
 }
 
 function createCardElement(visual) {
     const div = document.createElement('div');
-    div.className = `analysis-card ${visual.layout.default_width === 'full' ? 'card-full' : ''}`;
+    const isCollapsed = AIDA_STATE.collapsed_visuals.has(visual.id);
+    div.className = `analysis-card ${isCollapsed ? 'collapsed-vertical' : ''}`;
     div.id = `card-${visual.id}`;
 
     div.innerHTML = `
         <div class="card-header">
             <h4 class="card-title">${visual.title}</h4>
             <div class="card-actions">
-                <button class="close-button">✕</button>
+                <button class="close-button">▼</button>
             </div>
         </div>
         <div class="card-content">
@@ -198,6 +215,30 @@ function createCardElement(visual) {
             </div>
         </div>
     `;
+
+    div.addEventListener('click', () => {
+        if (div.classList.contains('collapsed-vertical')) {
+            div.classList.remove('collapsed-vertical');
+            AIDA_STATE.collapsed_visuals.delete(visual.id);
+
+            setTimeout(() => {
+                const chart = Chart.getChart(`chart-${visual.id}`);
+                if (chart) chart.resize();
+            }, 300);
+        }
+        updateWorkspace()
+    });
+
+    div.querySelector('.close-button').addEventListener('click', (e) => {
+        e.stopPropagation();
+        div.classList.add('collapsed-vertical');
+        AIDA_STATE.collapsed_visuals.add(visual.id);
+        updateWorkspace()
+    });
+
+    
+
+
     return div;
 }
 
