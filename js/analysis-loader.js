@@ -104,8 +104,11 @@ async function loadVisualsRegistry() {
     const indexRes = await fetch('assets/data/analyse_visuals/summary/index-analyse_visuals.json');
     const visualFiles = await indexRes.json();
     
-    const promises = visualFiles.map(file => 
-        fetch(`assets/data/analyse_visuals/${file}.json`).then(res => res.json())
+    const promises = visualFiles.map(file =>  {
+        console.log(file);
+        return fetch(`assets/data/analyse_visuals/${file}.json`).then(res => res.json())               
+    }
+        
     );
     AIDA_STATE.analysis_state.visuals_registry = await Promise.all(promises);
 
@@ -250,7 +253,17 @@ async function initializeChart(visual) {
         fetch(`assets/data/criteria/${id}.json`).then(res => res.json())
     );
     const criteriaData = await Promise.all(dataPromises);
-    console.log(criteriaData);
-    
-    VisualEngine.render(`chart-${visual.id}`, visual, criteriaData);
+ 
+    var target = null;
+    if(visual.target_path){
+        target = criteriaData[0].targets[visual.target_path];
+    }else{
+        target = criteriaData[0].targets;
+    }
+
+    var categories = null;
+    if (criteriaData[0].levels){
+        categories = criteriaData[0].levels;
+    }
+    VisualEngine.render(`chart-${visual.id}`, visual, target, categories);
 }

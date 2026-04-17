@@ -1,0 +1,12 @@
+{
+    "id": "v-ocean-radar",
+    "title": "Répartition des profils psychologiques selon les axes OCEAN",
+    "required_criteria": ["psychology-ocean"],
+    "target_path": "caracteristic_average",
+    "visual_config": {
+        "type": "radar",
+        "color_type": "single",
+        "fill": true
+    },
+    "rationale": "Visualisation de l'équilibre des cinq grands traits de personnalité à l'échelle de la population. Un score élevé en Névrosisme couplé à une basse Amabilité peut indiquer des tensions sociales latentes."
+}

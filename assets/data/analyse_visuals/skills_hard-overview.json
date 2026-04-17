@@ -1,0 +1,13 @@
+{
+    "id": "v-skills-hard",
+    "title": "Cibles : Compétences Techniques (Hard)",
+    "required_criteria": ["skill"],
+    "target_path": "hard_skill",
+    "visual_config": {
+        "type": "stackedBar",
+        "axis": "x",
+        "stacking": true,
+        "color_scheme": "paletteHard"
+    },
+    "rationale": "Répartition cible des niveaux d'expertise technique requis pour la maintenance et l'évolution des systèmes du dôme."
+}

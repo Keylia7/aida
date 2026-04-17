@@ -1,5 +1,9 @@
 [
     "age_pyramid",
     "location_distribution",
-    "sexe_distrib"
+    "ocean-profile",
+    "ocean-radar",
+    "sexe-distrib",
+    "skills_hard-overview",
+    "skills_soft-overview"
 ]

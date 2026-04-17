@@ -1,0 +1,12 @@
+{
+    "id": "v-ocean-profiles",
+    "title": "Répartition des Profils Psychologiques",
+    "required_criteria": ["psychology-ocean"],
+    "target_path": "profiles_distribution",
+    "visual_config": {
+        "type": "doughnut",
+        "cutout": "60%",
+        "color_type": "palette"
+    },
+    "rationale": "Identification des dynamiques de groupe et des risques de friction sociale basés sur les profils OCEAN dominants."
+}

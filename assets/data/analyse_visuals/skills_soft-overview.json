@@ -1,0 +1,13 @@
+{
+    "id": "v-skills-soft",
+    "title": "Cibles : Compétences Sociales (Soft)",
+    "required_criteria": ["skill"],
+    "target_path": "soft_skill",
+    "visual_config": {
+        "type": "stackedBar",
+        "axis": "x",
+        "stacking": true,
+        "color_scheme": "paletteSoft"
+    },
+    "rationale": "Objectifs de répartition des capacités comportementales nécessaires à la cohésion sociale et à la résolution de crises."
+}
