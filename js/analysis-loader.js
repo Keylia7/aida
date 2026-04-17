@@ -169,7 +169,8 @@ function renderVisualCards(visuals, container) {
     let collapsedCount = 0; 
 
     if (visuals.length === 0) {
-        container.innerHTML = '<div class="analysis-placeholder">...</div>';
+        text = "Sélectionner un critère d'analyse ..."
+        container.innerHTML = `<div class="analysis-placeholder">${text}</div>`;
         return;
     }
 

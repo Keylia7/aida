@@ -378,6 +378,10 @@ input:checked ~ .crit-label .crit-count {
     box-shadow: inset 0 0 15px rgba(0, 242, 255, 0.1);
 }
 
+.analysis-placeholder{
+    margin-left: 10px;;
+}
+
 .card-content {
     padding: 20px;
     min-height: 250px;
