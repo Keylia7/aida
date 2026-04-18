@@ -64,7 +64,7 @@ function renderList(selectedCandidates = AIDA_STATE.allCandidates){
         item.dataset.id = candidate.id; 
         
         item.innerHTML = `
-            <span class="id-badge">${candidate.id.split('-').pop()}</span>
+            <span class="id-badge">${candidate.id.split('-').slice(1).join('-')}</span>
             <span class="name">${candidate.identity.firstName} ${candidate.identity.lastName}</span>
         `;
 

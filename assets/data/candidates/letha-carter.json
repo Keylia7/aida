@@ -1,0 +1,59 @@
+{
+  "id": "CAN-LC-05",
+  "identity": {
+    "firstName": "Letha",
+    "lastName": "Carter",
+    "age": 35,
+    "sexe": "F",
+    "residence": "Secteur Urbain - Centre",
+    "currentSituation": "Responsable du Programme Projet 500"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "Conseil Scientifique Gouvernemental",
+        "role": "Membre du comité (Expertise Sociologie)",
+        "startDate": "2025-08",
+        "endDate": "Present",
+        "description": "Expertise dans la robustesse des sociétés face aux crises."
+      },
+      {
+        "company": "Résalliance",
+        "role": "Consultante Stratégique",
+        "startDate": "2022-01",
+        "endDate": "Present",
+        "description": "Accompagnement des entreprises privées et publiques dans l'adaptation aux contraintes liées au dérèglement climatique."
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "Faculté de Sociologie et de Psychologie Sociale",
+        "degree": "Doctorat en Sociologie",
+        "status": "Diplômée",
+        "year": "2020"
+      }
+    ],
+    "trainings": [
+      {
+        "name": "Analyse Systémique des Crises Civiques",
+        "date": "2023"
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Expertise en Mécanismes du Déni",
+        "date": "2021"
+      }
+    ]
+  },
+  "psychology": {
+    "mbti": "INTJ",
+    "traits": ["Visionnaire", "Exigeante", "Radicale", "Systémique", "Dissidente"],
+    "notes": "Architecte intellectuelle du Projet 500. Possède une capacité rare à raccourcir la distance entre causes et conséquences dans ses analyses[cite: 1912]. Présente une forme de bouillonnement intérieur face à l'inertie institutionnelle, oscillant entre mutisme protecteur et révolte vindicative[cite: 1821, 1827]. Elle perçoit la croissance infinie comme une utopie destructrice[cite: 1795]."
+  },
+  "recruitment": {
+    "globalStatus": "Selected"
+  }
+}

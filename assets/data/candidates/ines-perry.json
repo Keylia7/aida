@@ -1,0 +1,64 @@
+{
+  "id": "CAN-IP-08",
+  "identity": {
+    "firstName": "Ines",
+    "lastName": "Perry",
+    "age": 50,
+    "sexe": "F",
+    "residence": "Secteur Urbain",
+    "currentSituation": "Médecin généraliste (Cabinet libéral)"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "Cabinet Médical Indépendant",
+        "role": "Médecin de famille",
+        "startDate": "2018-03",
+        "endDate": "Present",
+        "description": "Pratique de la médecine générale avec une attention particulière pour la détresse psychologique post-pandémie. Privilégie une approche globale de la santé."
+      },
+      {
+        "company": "Centre Hospitalier Régional",
+        "role": "Interne / Médecin urgentiste (période de crise)",
+        "startDate": "2020-05",
+        "endDate": "2022-12",
+        "description": "Mobilisation active durant la pandémie mondiale. Gestion des soins critiques en environnement saturé."
+      },
+      {
+        "company": "Centre Hospitalier Régional",
+        "role": "Interne / Médecin urgentiste (période de crise)",
+        "startDate": "2005-03",
+        "endDate": "2018-09",
+        "description":"Médecin généraliste en milieu hospitalier"
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "Faculté de Médecine",
+        "degree": "Doctorat en Médecine (MD)",
+        "status": "Diplômée",
+        "year": "2008"
+      }
+    ],
+    "trainings": [
+      {
+        "name": "Médecine intégrative et hygiène de vie",
+        "date": "2016"
+      },
+      {
+        "name": "Soutien psychologique en milieu post-traumatique",
+        "date": "2021"
+      }
+    ]
+  },
+  "psychology": {
+    "mbti": "INFJ",
+    "traits": ["Empathique", "Optimiste", "Altruiste", "Nostalgique", "Engagée"],
+    "notes": "Possède une foi inébranlable en la force collective de l'humanité et en sa capacité de résilience par l'entraide. Sa vocation médicale dépasse le simple soin physique pour s'ancrer dans le soutien moral de ses patients. Elle fuit son propre sentiment d'impuissance face aux limites de la médecine traditionnelle en cherchant des alternatives sociales et communautaires. Très attachée à sa famille (Ned et Timmy)."
+  },
+  "recruitment": {
+    "globalStatus": "Selected"
+  }
+}

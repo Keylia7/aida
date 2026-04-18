@@ -1,0 +1,54 @@
+{
+  "id": "CAN-RD-06",
+  "identity": {
+    "firstName": "Roger",
+    "lastName": "Daniel",
+    "age": 64,
+    "sexe": "M",
+    "residence": "Quartier résidentiel de haut standing",
+    "currentSituation": "Écrivain à succès / Conférencier spécialisé en psychologie comportementale"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "Éditions Indépendantes",
+        "role": "Écrivain / Essayiste",
+        "startDate": "1990",
+        "endDate": "Present",
+        "description": "Auteur de nombreux ouvrages dont le dernier succès : 'La réussite, une programmation neuronale et comportementale'. Travaille actuellement sur un essai traitant de la dépression infantile."
+      },
+      {
+        "company": "Secteur Éducatif (ZEP)",
+        "role": "Intervenant / Conférencier",
+        "startDate": "2006",
+        "endDate": "2006",
+        "description": "Ateliers de sensibilisation et de communication non violente auprès de familles en difficulté."
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "Master en Psychologie",
+        "degree": "Spécialisation en Psychologie et Pédagogie",
+        "status": "Diplômé",
+        "year": "1986"
+      }
+    ],
+    "trainings": [
+      {
+        "name": "Management des comportements et neurosciences",
+        "date": "1992"
+      }
+    ],
+    "notes": ""
+  },
+  "psychology": {
+    "mbti": "ENFJ",
+    "traits": ["Suffisant", "Charmeur", "Manipulateur", "Observateur", "Pugnace"],
+    "notes": ""
+  },
+  "recruitment": {
+    "globalStatus": "Selected"
+  }
+}

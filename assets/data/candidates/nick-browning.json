@@ -1,0 +1,49 @@
+{
+  "id": "CAN-NB-04",
+  "identity": {
+    "firstName": "Nick",
+    "lastName": "Browning",
+    "age": 28,
+    "sexe": "M",
+    "residence": "Établissement Pénitentiaire",
+    "currentSituation": "Détenu"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "Administration Pénitentiaire",
+        "role": "Travail en atelier",
+        "startDate": "2023",
+        "endDate": "2025",
+        "description": "Activités de production manuelle"
+      },
+      {
+        "company": "Ynphonie",
+        "role": "Ingénieur système",
+        "startDate": "2022",
+        "endDate": "2023",
+        "description": "Activités d'optimisation des chaînes de production industrielles"
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "ENIMA",
+        "degree": "Diplôme d'ingénieur en procédés industriels",
+        "status": "Diplômé",
+        "year": "2021"
+      }
+    ],
+    "trainings": [
+    ]
+  },
+  "psychology": {
+    "mbti": "ISTP",
+    "traits": ["Désabusé", "Imaginatif", "Résilient", "Coupable", "Observateur"],
+    "notes": ""
+  },
+  "recruitment": {
+    "globalStatus": "Selected"
+  }
+}

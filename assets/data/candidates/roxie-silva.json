@@ -1,5 +1,5 @@
 {
-  "id": "CAN-2026-RS-01",
+  "id": "CAN-RS-01",
   "identity": {
     "firstName": "Roxie",
     "lastName": "Silva",
@@ -49,10 +49,6 @@
     "notes": "Profil présentant un fort potentiel d'empathie. Études de droit interrompues suite aux crises sociales. Capacité d'analyse des structures de pouvoir."
   },
   "recruitment": {
-    "globalStatus": "Qualified",
-    "waves": [
-      { "id": 1, "step": "Data Analysis", "result": "Pass" },
-      { "id": 2, "step": "Psychological Interview", "result": "Pass" }
-    ]
+    "globalStatus": "Selected"
   }
 }

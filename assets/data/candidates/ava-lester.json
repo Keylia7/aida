@@ -1,0 +1,50 @@
+{
+  "id": "CAN-AL-07",
+  "identity": {
+    "firstName": "Ava",
+    "lastName": "Lester",
+    "age": 32,
+    "sexe": "F",
+    "residence": "Secteur Urbain",
+    "currentSituation": "Chargée de communication"
+  },
+  "professional": {
+    "experiences": [
+      {
+        "company": "Agence de Communication (Freelance / Collaboration)",
+        "role": "Consultante Green Marketing",
+        "startDate": "2018-05",
+        "endDate": "Present",
+        "description": "Responsable de campagne de petite et moyenne entreprise dans le secteur du cosmétique"
+      }
+    ]
+  },
+  "education": {
+    "schools": [
+      {
+        "name": "École Supérieure de Communication et Marketing",
+        "degree": "Master en Stratégie Digitale",
+        "status": "Diplômée",
+        "year": "2018"
+      }
+    ],
+    "trainings": [
+      {
+        "name": "Analyse de données et Web Analytics",
+        "date": "2022"
+      },
+      {
+        "name": "Éco-socio-conception des services numériques",
+        "date": "2023"
+      }
+    ]
+  },
+  "psychology": {
+    "mbti": "ENFP",
+    "traits": ["Idéaliste", "Engagée", "Analytique", "Créative", "Intuitive"],
+    "notes": "Convaincue que la communication peut être un outil de changement sociétal majeur si elle est mise au service de causes éthiques. Utilise sa maîtrise des codes du 'paraître' pour hacker le système et promouvoir des modes de consommation durables. Elle voit chaque geste quotidien comme un vote politique et cherche à rendre tangibles les conséquences des choix individuels."
+  },
+  "recruitment": {
+    "globalStatus": "Selected"
+  }
+}
